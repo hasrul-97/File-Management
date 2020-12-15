@@ -1,0 +1,41 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/Flight/GetFlightDetails",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44380
+        }
+      ],
+      "UpstreamPathTemplate": "/Flight",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Passenger/GetAllPassenger",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44338
+        }
+      ],
+      "UpstreamPathTemplate": "/Passenger",
+      "UpstreamHttpMethod": [ "Get" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:44325"
+  },
+  "ServiceDiscoveryProvider": {
+    "Type": "Eureka"
+  },
+  "eureka": {
+    "client": {
+      "serviceUrl": "http://localhost:8761/eureka/",
+      "shouldRegisterWithEureka": false,
+      "shouldFetchRegistry": true
+    }
+  }
+}

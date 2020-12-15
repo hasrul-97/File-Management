@@ -1,0 +1,259 @@
+<template>
+  <nav class="navbar navbar-absolute navbar-shadow bg-white navbar">
+    <div class="">
+      <p class="mb-auto mt-auto logo-text text-muted">
+        File <span style="color: #5959ff; margin-left: -5px">Manager</span>
+      </p>
+    </div>
+    <div class="">
+      <div class="navbar-menu" id="open-navbar1">
+        <ul class="navbar-nav">
+          <li class="navbar-dropdown">
+            <a
+              @click="open()"
+              style="cursor: pointer"
+              id="user-menu"
+              class="dropdown-toggler"
+            >
+              <span
+                ><img class="img" src="../assets/img/user.png" alt="user"
+              /></span>
+              <i class="fa fa-angle-down"></i>
+            </a>
+            <ul class="dropdown" id="user-dropdown">
+              <li>
+                <router-link to="/hello">Hello</router-link>
+                <router-link to="/something">Header</router-link
+                ><a href="#">Some action</a>
+              </li>
+              <li class="separator"></li>
+              <li><a href="#">Settings</a></li>
+              <li class="separator"></li>
+              <li><a href="#">Log Out</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</template>
+<script>
+export default {
+  name: "Header",
+  methods: {
+    open() {
+      let userDropdown = document.getElementById("user-dropdown");
+      if (userDropdown.classList.contains("show")) {
+        userDropdown.classList.remove("show");
+      } else {
+        userDropdown.classList.add("show");
+        userDropdown.addEventListener("click", function () {
+          userDropdown.classList.remove("show");
+        });
+      }
+    },
+    close() {
+      console.log("Closed");
+    },
+  },
+};
+</script>
+
+<style>
+.navbar-shadow {
+  box-shadow: rgb(220, 220, 220) 0px 2px 10px;
+}
+.navbar {
+  height: 80px;
+}
+.vertical-align {
+  vertical-align: middle;
+}
+.logo-text {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 28px;
+}
+
+.container {
+  width: 1170px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.navbar,
+.navbar .container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (max-width: 768px) {
+  .navbar,
+  .navbar .container {
+    display: block;
+  }
+}
+.navbar {
+  padding: 1.15rem 1rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.035);
+  background-color: #fff;
+}
+@media (min-width: 576px) {
+  .navbar .container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .navbar .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .navbar .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .navbar .container {
+    max-width: 1140px;
+  }
+}
+.navbar .navbar-header {
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .navbar .navbar-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+  }
+}
+.navbar .navbar-header .navbar-toggler {
+  border-radius: 5px;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  display: none;
+  outline: none;
+}
+@media (max-width: 768px) {
+  .navbar .navbar-header .navbar-toggler {
+    display: block;
+  }
+}
+.navbar .navbar-header .navbar-toggler span {
+  height: 2px;
+  width: 22px;
+  background-color: #929aad;
+  display: block;
+}
+.navbar .navbar-header .navbar-toggler span:not(:last-child) {
+  margin-bottom: 0.2rem;
+}
+.navbar .navbar-header > a {
+  font-weight: 500;
+  color: #3c4250;
+}
+.navbar .navbar-menu {
+  display: flex;
+  flex-basis: auto;
+  flex-grow: 1;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .navbar .navbar-menu {
+    text-align: center;
+  }
+}
+.navbar .navbar-menu .navbar-nav {
+  margin-left: auto;
+  flex-direction: row;
+  display: flex;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+@media (max-width: 768px) {
+  .navbar .navbar-menu .navbar-nav {
+    width: 100%;
+    display: block;
+  }
+}
+.navbar .navbar-menu .navbar-nav > li > a {
+  color: #3c4250;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+}
+.navbar .navbar-menu .navbar-nav > li > a:hover {
+  color: #66f;
+}
+@media (max-width: 768px) {
+  .navbar .navbar-menu .navbar-nav > li > a {
+  }
+}
+.navbar .navbar-menu .navbar-nav > li.active a {
+  color: #66f;
+}
+.navbar .navbar-menu .navbar-nav .navbar-dropdown .dropdown {
+  list-style: none;
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+  padding: 0.5rem 0;
+  min-width: 160px;
+  width: auto;
+  white-space: nowrap;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  z-index: 99999;
+  border-radius: 0.75rem;
+  display: none;
+}
+@media (max-width: 768px) {
+  .navbar .navbar-menu .navbar-nav .navbar-dropdown .dropdown {
+    position: absolute;
+    box-shadow: none;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  }
+}
+.navbar .navbar-menu .navbar-nav .navbar-dropdown .dropdown li a {
+  color: #3c4250;
+  padding: 0.25rem 1rem;
+  display: block;
+}
+.navbar .navbar-menu .navbar-nav .navbar-dropdown .dropdown.show {
+  display: block !important;
+}
+.navbar .navbar-menu .navbar-nav .dropdown > .separator {
+  height: 1px;
+  width: 100%;
+  margin: 9px 0;
+  background-color: #eee;
+}
+.navbar .navbar-dropdown {
+  position: relative;
+}
+.navbar .navbar-header > a span {
+  color: #66f;
+}
+.navbar .navbar-header h4 {
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+@media (max-width: 768px) {
+  .navbar .navbar-header h4 {
+    font-size: 1.05rem;
+  }
+}
+
+.img {
+  width: 45px;
+}
+</style>
